@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Our Courses | S.I.E.A.</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta http-equiv="content-language" content="en-in"/>
+	<meta name="author" content="Abhishek Joshi & Cibin Chandrasekhar">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#7b2a7b">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#7b2a7b">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#7b2a7b">
+
+	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-add-css="false"></script>
+	<link href="https://use.fontawesome.com/releases/v5.13.0/css/svg-with-js.css" rel="stylesheet" />
+
+	<link rel="shortcut icon" href="images/logo2.png" type="image/png">
+	<link rel="icon" href="images/logo2.png" type="image/png">
+	<link rel="apple-touch-icon" href="images/logo2.png" type="image/png">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+
+
+	<script type="text/javascript">
+		var no_of_click = 0;
+
+		function dyheight() {
+			document.getElementById('footer-image').style.width = document.getElementById('footer-image-div').offsetWidth+'px';
+			document.getElementById('footer-image-div').style.height = document.getElementById('footer-image').clientHeight+'px';
+			document.getElementById('footer-image-div').style.marginTop = ((document.getElementById('footer-3').offsetHeight - document.getElementById('footer-image').clientHeight)/2)+'px';
+
+			var service_data = document.getElementsByClassName('service-data');
+			for(var i=0;i<service_data.length;i++)
+			{
+				service_data[i].style.height = 'auto';
+			}
+
+
+			if(window.innerWidth>767)
+			{
+				var max = service_data[0].clientHeight;
+				for(var i=1;i<service_data.length;i++)
+				{
+					if(service_data[i].clientHeight>max)
+					{
+						max = service_data[i].clientHeight;
+					}
+				}
+				for(var i=0;i<service_data.length;i++)
+				{
+					service_data[i].style.height = max+'px';
+				}
+			}
+
+			page_height();
+		}
+
+
+		function black(){
+			no_of_click++;
+			if(document.getElementById('check').checked)
+			{
+				document.getElementById('nav').style.background = '#fff';
+				document.getElementById('logo-dark').style.opacity = '1';
+				document.getElementById('logo-light').style.opacity = '0';
+				document.getElementById('bars').style.color = "#000";
+				setTimeout(function() {document.getElementById('notnav').classList.toggle('nodisplay');}, 500);
+				document.getElementById('bars').style.transform = 'rotate(-90deg)';
+				setTimeout(function() {document.getElementById('bars').classList.add('fa-times');}, 300);
+				setTimeout(function() {document.getElementById('bars').style.transform = 'rotate(-270deg)';}, 100);
+			}
+			else
+			{
+				navchange();
+				document.getElementById('notnav').classList.toggle('nodisplay');
+				document.getElementById('bars').style.transform = 'rotate(-180deg)';
+				setTimeout(function() {document.getElementById('bars').classList.add('fa-bars');}, 300);
+				setTimeout(function() {document.getElementById('bars').style.transform = 'rotate(0deg)';}, 100);
+			}
+		}
+
+		function page_height() {
+			setTimeout(function() {
+				document.getElementById('full-footer').style.marginTop = '0';
+				var doc_height = document.getElementsByTagName('body')[0].offsetHeight;
+				var view_height = window.innerHeight;
+				if(doc_height<view_height)
+				{
+					document.getElementById('full-footer').style.marginTop = (view_height - doc_height) + 'px';
+				}
+			}, 30);
+		}
+
+
+
+		function navchange() {
+			if(window.scrollY>2)
+			{
+				document.getElementById('nav').style.background = 'rgba(255,255,255,0.97)';
+				document.getElementById('logo-dark').style.opacity = '1';
+				document.getElementById('logo-light').style.opacity = '0';
+				document.getElementById('nav').style.boxShadow = '0px 4px 4px rgba(0,0,0,0.25)';
+				let items = document.getElementsByClassName('navbar-item');
+				let i=0;
+				for(i=0;i<items.length;i++)
+				{
+					items[i].style.color = '#393185';
+				}
+				document.getElementById('bars').style.color = "#000";
+				document.getElementsByClassName('banner')[0].style.paddingTop = '60px';
+				document.getElementById('nav').style.height = '60px';
+
+				var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+				for(i=0; i<list.length; i++)
+				{
+					list[i].style.lineHeight = '60px';
+				}
+
+				list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+				list.style.height = '50px';
+				list.style.top = '5px';
+
+				list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+				list.style.height = '50px';
+				list.style.top = '5px';
+			}
+			else
+			{
+				document.getElementById('nav').style.background = 'transparent';
+				document.getElementById('logo-light').style.opacity = '1';
+				document.getElementById('logo-dark').style.opacity = '0';
+				document.getElementById('nav').style.boxShadow = '0px 0px 0px rgba(0,0,0,0)';
+				if(window.innerWidth>870)
+				{
+					let items = document.getElementsByClassName('navbar-item');
+					let i=0;
+					for(i=0;i<items.length;i++)
+					{
+						items[i].style.color = 'rgba(255,255,255,1)';
+					}
+					document.getElementsByClassName('banner')[0].style.paddingTop = '70px';
+					document.getElementById('nav').style.height = '70px';
+
+					var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+					for(i=0; i<list.length; i++)
+					{
+						list[i].style.lineHeight = '70px';
+					}
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+					list.style.height = '55px';
+					list.style.top = '10px';
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+					list.style.height = '55px';
+					list.style.top = '10px';
+				}
+				else
+				{
+					let items = document.getElementsByClassName('navbar-item');
+					let i=0;
+					for(i=0;i<items.length;i++)
+					{
+						items[i].style.color = '#393185';
+					}
+					document.getElementsByClassName('banner')[0].style.paddingTop = '60px';
+					document.getElementById('nav').style.height = '60px';
+
+					var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+					for(i=0; i<list.length; i++)
+					{
+						list[i].style.lineHeight = '60px';
+					}
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+					list.style.height = '50px';
+					list.style.top = '5px';
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+					list.style.height = '50px';
+					list.style.top = '5px';
+				}
+				document.getElementById('bars').style.color = "#fff";
+			}
+		}
+
+		function boom()
+		{
+			var opacity = document.getElementsByClassName('boom-opacity');
+			for(var i=0;i<opacity.length;i++)
+			{
+				if(window.innerHeight<900)
+				{
+					if(window.scrollY+((9.5*window.innerHeight)/10)>opacity[i].offsetTop)
+					{
+						opacity[i].style.opacity = '1';
+						opacity[i].style.marginTop = '0';
+					}
+				}
+				else
+				{
+					opacity[i].style.opacity = '1';
+				}
+			}
+			var mt = document.getElementsByClassName('boom-mt');
+			for(var i=0;i<mt.length;i++)
+			{
+				if(window.innerWidth>600 && window.innerHeight<900)
+				{
+					if(window.innerHeight>(mt[i].getBoundingClientRect().top)+window.innerHeight-600)
+					{
+						mt[i].style.marginTop = '0';
+					}
+				}
+				else if(window.innerHeight<900)
+				{
+					if(window.innerHeight>(mt[i].getBoundingClientRect().top)+window.innerHeight-750)
+					{
+						mt[i].style.marginTop = '0';
+					}
+				}
+				else
+				{
+					mt[i].style.marginTop = '0';
+				}
+			}
+		}
+
+		function search()
+		{
+			var search = document.getElementById('search-box').value;
+			var s_len = search.length;
+			var s_count = 0;
+
+			var s_tech = '<option value="Computer Engineering"></option><option value="Electrical Engineering"></option><option value="Astronomy"></option>';
+			var s_med = '<option value="MBBS"></option><option value="Dentistry"></option><option value="Cardiology"></option>';
+			var s_man = '<option value="BBA"></option><option value="MBA Project Management"></option><option value="MBA Human Resources"></option>';
+
+			var filter = false;
+
+			if(document.getElementById('check-tech').checked || document.getElementById('check-med').checked || document.getElementById('check-man').checked)
+			{
+				if(document.getElementById('check-tech').checked && document.getElementById('check-med').checked && document.getElementById('check-man').checked)
+				{
+					document.getElementById('filter-active').style.display = 'none';
+				}
+				else
+				{
+					filter = true;
+					document.getElementById('filter-active').style.display = 'block';
+				}
+			}
+			else
+			{
+				document.getElementById('filter-active').style.display = 'none';
+			}
+
+			var s_suggest = '';
+
+			if(filter)
+			{
+				if(document.getElementById('check-tech').checked)
+				{
+					s_suggest += s_tech;
+				}
+
+				if(document.getElementById('check-med').checked)
+				{
+					s_suggest += s_med;
+				}
+
+				if(document.getElementById('check-man').checked)
+				{
+					s_suggest += s_man;
+				}
+			}
+			else
+			{
+				s_suggest = s_tech + s_med + s_man;
+			}
+
+			document.getElementById('searches').innerHTML = s_suggest;
+
+			var s_opt = document.getElementsByClassName('search-opt');
+
+			for(var i=0; i<s_opt.length; i++)
+			{
+				if(!filter || document.getElementById(s_opt[i].getAttribute('b')).checked)
+				{
+					if(s_len==0)
+					{
+						s_opt[i].style.display = 'block';
+						s_count++;
+					}
+					else
+					{
+						let attr_list = s_opt[i].getAttribute('a').split(',');
+						for(var j=0; j<attr_list.length; j++)
+						{
+							if(attr_list[j].slice(0, s_len).toLowerCase() == search.toLowerCase())
+							{
+								s_opt[i].style.display = 'block';
+								s_count++;
+								break;
+							}
+							else
+							{
+								s_opt[i].style.display = 'none';
+							}
+						}
+					}
+				}
+				else
+				{
+					s_opt[i].style.display = 'none';
+				}
+			}
+
+			if(s_count==0)
+			{
+				document.getElementById('no-course').style.display = 'block';
+			}
+			else
+			{
+				document.getElementById('no-course').style.display = 'none';
+			}
+
+			boom();
+
+			page_height();
+		}
+	</script>
+
+</head>
+<body>
+
+	<div class="banner padding-b-2">
+
+		<nav id="nav">
+			<input type="checkbox" id="check" onchange="black();">
+			<label for="check">
+				<i class="fas fa-bars" id="bars"></i>
+			</label>
+			<a href="index.html"><img src="images/logo1.png" id="logo-light" alt="Logo"></a>
+			<a href="index.html"><img src="images/logo2.png" id="logo-dark" alt="Logo"></a>
+			<ul>
+				<li><a class="navbar-item" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+				<li><a class="navbar-item" href="about.html"><i class="fas fa-users"></i> About Us</a></li>
+				<li class="active" id="active"><a class="navbar-item" href="javascript: void(0)"><i class="fas fa-book-open"></i> Our Courses</a></li>
+				<li><a class="navbar-item" href="contact.html"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+			</ul>
+		</nav>
+
+		<div class="container">
+			<h1 class=" subname padding-t-2 padding-b-2 text-white">Our Courses</h1>
+		</div>
+
+	</div>
+
+
+<div id="notnav" class="nodisplay"></div>
+
+
+
+
+
+
+
+
+<div class="quote">
+	<div class="container text-center">
+		<blockquote class="blockquote margin-b-0 font-italic font-weight-bold padding-y-3 services-quote">
+		  <p class="margin-b-0 padding-y-2">We provide courses in many diverse sectors.<br>Space Institute of East Androemeda provides a variety of courses in the fields of Technology, Medical & Management.</p>
+		</blockquote>
+	</div>
+</div>
+
+<div class="container padding-t-5">
+	<input type="text" class="form-control search-courses mx-auto" placeholder="Search Courses !" id="search-box" onkeyup="search();" onchange="search();" list="searches">
+	<datalist id="searches">
+		<option value="Computer Engineering"></option>
+		<option value="Electrical Engineering"></option>
+		<option value="Astronomy"></option>
+		<option value="MBBS"></option>
+		<option value="Dentistry"></option>
+		<option value="Cardiology"></option>
+		<option value="BBA"></option>
+		<option value="MBA Project Management"></option>
+		<option value="MBA Human Resources"></option>
+	</datalist>
+</div>
+
+<div class="container padding-b-5 padding-t-3">
+	<div class="row">
+		<div class="col-12 text-center padding-b-4">
+			<div class="row justify-content-center">
+				<div class="col-12 col-sm-auto">
+					Apply Filter:
+				</div>
+				<div class="col-auto">
+					<input type="checkbox" name="check-tech" id="check-tech" onchange="search();">
+					<label for="check-tech">Technology</label>
+				</div>
+				<div class="col-auto">
+					<input type="checkbox" name="check-med" id="check-med" onchange="search();">
+					<label for="check-med">Medical</label>
+				</div>
+				<div class="col-auto">
+					<input type="checkbox" name="check-man" id="check-man" onchange="search();">
+					<label for="check-man">Management</label>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 text-center padding-b-4 d-none" id="filter-active"><b>Filter is active</b></div>
+		<div class="col-12 text-center d-none" id="no-course"><h4>Sorry! No such courses available.</h4></div>
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="engineering,computers,computer engineering,computer science" b="check-tech">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service1">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-laptop-code"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">Computer Engg.</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">Learn about various hardware components and software languages of computers.<br><b>Duration: 4yrs</b><br><b>Fee: ₹112000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?0')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="engineering,electrical,electrical engineering,electronics" b="check-tech">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service2">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-charging-station"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">Electrical Engg.</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">Gain knowledge about various electrical equipments, components and appliances.<br><b>Duration: 4yrs</b><br><b>Fee: ₹118000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?1')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="engineering,astronomy" b="check-tech">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service3">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-satellite"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">Astronomy</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">Get a chance to learn about various aspects of space, satellites and celestial bodies.<br><b>Duration: 3yrs</b><br><b>Fee: ₹150000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?2')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="mbbs,m.b.b.s." b="check-med">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service4">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-user-md"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">M.B.B.S.</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">Learn about medicines, biology and bio-chemistry and other medical aspects.<br><b>Duration: 5yrs</b><br><b>Fee: ₹450000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?3')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="dentistry,dentist,dental" b="check-med">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service7">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-tooth"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">Dentistry</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">Treat the conditions and injuries that affect the teeth and gums.<br><b>Duration: 5yrs</b><br><b>Fee: ₹500000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?6')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="cardiology,cardiac" b="check-med">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service8">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-file-medical-alt"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">Cardiology</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">Learn about diagnosis and treatment of ailments related to the heart.<br><b>Duration: 3yrs</b><br><b>Fee: ₹732000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?7')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="bba,business,business administration,bachelors in business administration,bachelor in business administration" b="check-man">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service5">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="far fa-chart-bar"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">B.B.A.</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">This course is a full-time study in one or more areas of business concentrations.<br><b>Duration: 3yrs</b><br><b>Fee: ₹225000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?4')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="mba,masters in business administration,master in business administration,projects,project management" b="check-man">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service6">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-chart-line"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">M.B.A. Projects</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">This course will help students to gain managerial, and leadership skills.<br><b>Duration: 2yrs</b><br><b>Fee: ₹978000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?5')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity search-opt" a="mba,masters in business administration,master in business administration,hr,h.r.,human resources" b="check-man">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service9">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-user-friends"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">M.B.A. in HR</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-3">This program offers training in managing the workforce of the organization.<br><b>Duration: 2yrs</b><br><b>Fee: ₹112000</b><br><button class="margin-t-3 btn enroll-button" onclick="location.href = location.href.replace('courses.html','enrollment.html?8')">Enroll</button></div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<footer class="footer" id="full-footer">
+	<div class="main-footer padding-t-3">
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-lg-4 col-sm-6 col-12 padding-b-sm-0 padding-b-4 boom-mt boom-opacity">
+					<div class="margin-l-sm-3 margin-l-lg-0 margin-l-0 text-left margin-b-2 margin-b-sm-3 footer-head"><b>Domains</b></div>
+					<div class="row footer-data">
+						<div class="col-12 text-left margin-b-2">We have expertise in providing knowledge to the various sectors of technology:</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Satellites</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Human Interventions</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Galaxies</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Medical Sciences</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Management & Statistics</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Space Softwares</div>
+					</div>
+				</div>
+
+
+
+				<div class="col-lg-4 col-sm-6 col-12 padding-b-sm-0 padding-b-4 boom-mt boom-opacity">
+					<div class="margin-l-sm-3 margin-l-0 margin-b-3 footer-head text-left"><b>Reach Out To Us</b></div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="far fa-id-card"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">Abhishek Joshi<br>Cibin Chandrasekhar</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="fas fa-mobile-alt"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">9757468857<br>8451039939</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="far fa-envelope"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">siea@space.edu.in</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="fas fa-store-alt"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2 footer-address">At Andromeda Galaxy,<wbr> Near Milky Way<br>41° 16′ 9″</div>
+					</div>
+					<div class="text-center text-md-left padding-b-2 padding-l-md-5">
+						<a href="#" title="Instagram" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-insta text-white"><i class="fab fa-instagram"></i></a>
+						<a href="#" title="Location" class="btn btn-light padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social"><i class="fas fa-map-marker-alt"></i></a>
+						<a href="#" title="LinkedIn" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-linkedin text-white"><i class="fab fa-linkedin-in"></i></a>
+						<a href="#" title="Facebook" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-facebook text-white"><i class="fab fa-facebook"></i></a>
+					</div>
+				</div>
+
+
+				<div class="col-lg-4 col-12 padding-t-sm-0 padding-y-2 d-lg-block d-none" id="footer-3">
+					<div class="w-75 mx-auto" id="footer-image-div">
+						<img src="images/logo1.png" class="position-absolute" id="footer-image" alt="SIEA" onload="dyheight();">
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<div class="credit-box padding-y-0 margin-y-0"><div class="text-right credit container padding-y-0 margin-y-0">Website by Abhishek Joshi<br>& Cibin Chandrasekhar</div></div>
+
+	<div class="copyright small text-center padding-y-1"><i class="far fa-copyright"></i> 2020 SIEA. All rights reserved.</div>
+</footer>
+
+
+<script type="text/javascript">
+	
+	if(window.scrollY>2)
+	{
+		document.getElementById('nav').style.background = 'rgba(255,255,255,0.97)';
+		document.getElementById('logo-dark').style.opacity = '1';
+		document.getElementById('logo-light').style.opacity = '0';
+		document.getElementById('nav').style.boxShadow = '0px 4px 4px rgba(0,0,0,0.25)';
+		let items = document.getElementsByClassName('navbar-item');
+		let i=0;
+		for(i=0;i<items.length;i++)
+		{
+			items[i].style.color = '#393185';
+		}
+		document.getElementById('bars').style.color = "#000";
+		document.getElementsByClassName('banner')[0].style.paddingTop = '60px';
+		document.getElementById('nav').style.height = '60px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '60px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+	}
+	else if(window.innerWidth<870)
+	{
+		document.getElementsByClassName('banner')[0].style.paddingTop = '60px';
+		document.getElementById('nav').style.height = '60px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '60px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+	}
+	else
+	{
+		document.getElementsByClassName('banner')[0].style.paddingTop = '70px';
+		document.getElementById('nav').style.height = '70px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '70px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '55px';
+		list.style.top = '10px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '55px';
+		list.style.top = '10px';
+	}
+	
+	list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+
+	document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].onmouseover = function() {
+		if(window.innerWidth>870 && window.scrollY<2)
+		{
+			for(i=0; i<list.length; i++)
+			{
+				list[i].getElementsByTagName('a')[0].style.color = '#fff';
+			}
+		}
+	}
+
+
+
+	document.getElementById('notnav').onclick = function() {
+		document.getElementById('check').checked=false;
+		black();
+	}
+
+	document.getElementById('active').onclick = function() {
+		if(window.innerWidth<=870)
+		{
+			document.getElementById('check').checked=false;
+			black();
+		}
+	}
+
+
+
+	window.onscroll = function() {
+
+		navchange();
+
+		boom();
+
+
+	}
+
+	
+
+
+
+
+	window.onresize = function() {
+		navchange();
+
+		if(document.getElementById('check').checked)
+		{
+			if(window.innerWidth<=870)
+			{
+				document.getElementById('notnav').classList.remove('nodisplay');
+			}
+			else
+			{
+				document.getElementById('notnav').classList.add('nodisplay');
+			}
+		}
+
+
+		setTimeout(function() {
+			dyheight();
+		}, 350);
+
+		boom();
+
+		page_height();
+	}
+
+	boom();
+
+
+	window.onload = function() {
+		document.getElementById('check').checked=false;
+		page_height();
+		
+		setTimeout(function() {
+			if(document.getElementById('check').checked && no_of_click==0)
+			{
+				document.getElementById('check').checked=false;
+			}
+			boom();
+			page_height();
+			dyheight();
+		}, 2200);
+	};
+
+	document.onload = function() {
+		document.getElementById('check').checked=false;
+		page_height();
+		
+		setTimeout(function() {
+			if(document.getElementById('check').checked && no_of_click==0)
+			{
+				document.getElementById('check').checked=false;
+			}
+			boom();
+			page_height();
+			dyheight();
+		}, 2200);
+	};
+
+		
+	
+</script>
+
+</body>
+</html>

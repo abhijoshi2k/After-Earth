@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Enroll Now | S.I.E.A.</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta http-equiv="content-language" content="en-in"/>
+	<meta name="author" content="Abhishek Joshi & Cibin Chandrasekhar">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#7b2a7b">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#7b2a7b">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#7b2a7b">
+
+	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-add-css="false"></script>
+	<link href="https://use.fontawesome.com/releases/v5.13.0/css/svg-with-js.css" rel="stylesheet" />
+
+	<link rel="shortcut icon" href="images/logo2.png" type="image/png">
+	<link rel="icon" href="images/logo2.png" type="image/png">
+	<link rel="apple-touch-icon" href="images/logo2.png" type="image/png">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+
+
+	<script type="text/javascript">
+
+		var course_id = location.href.split('?')[1];
+		course_id = parseInt(course_id, 10);
+
+		const course_list = ['B.E. Computer Engineering', 'B.E. Electrical Engineering', 'Bachelor of Astronomy', 'M.B.B.S.', 'B.B.A.', 'M.B.A. Project Management', 'Dentistry', 'Cardiology', 'M.B.A. Human Resources'];
+		const course_fee = [112000, 118000, 150000, 450000, 225000, 978000, 500000, 732000, 112000];
+		const course_dur = [4,4,3,5,3,2,5,3,2];
+
+		if(course_id>=course_dur.length || location.href.split('?').length!=2)
+		{
+			location.replace(location.href.split('?')[0].replace('enrollment.html','courses.html'))
+		}
+
+		var no_of_click = 0;
+
+		function checkout() {
+
+			let total = 0;
+
+			total += course_fee[course_id];
+			total += 2500;
+
+			if(document.getElementById('library').checked)
+			{
+				document.getElementById('library-checkout').innerHTML = 'Library Charges';
+				document.getElementById('library-checkout-cost').innerHTML = '₹ 900';
+				document.getElementById('library-receipt').innerHTML = 'Library Charges';
+				document.getElementById('library-receipt-cost').innerHTML = '₹ 900';
+				document.getElementById('library-service').innerHTML = 'Library';
+				total+= 900;
+			}
+			else
+			{
+				document.getElementById('library-checkout').innerHTML = '';
+				document.getElementById('library-checkout-cost').innerHTML = '';
+				document.getElementById('library-receipt').innerHTML = '';
+				document.getElementById('library-receipt-cost').innerHTML = '';
+				document.getElementById('library-service').innerHTML = '';
+			}
+
+			if(document.getElementById('hostel').checked)
+			{
+				document.getElementById('hostel-checkout').innerHTML = 'Hostel Fee';
+				document.getElementById('hostel-checkout-cost').innerHTML = '₹ 18000';
+				document.getElementById('hostel-receipt').innerHTML = 'Hostel Fee';
+				document.getElementById('hostel-receipt-cost').innerHTML = '₹ 18000';
+				document.getElementById('hostel-service').innerHTML = 'Hostel';
+				total+= 18000;
+			}
+			else
+			{
+				document.getElementById('hostel-checkout').innerHTML = '';
+				document.getElementById('hostel-checkout-cost').innerHTML = '';
+				document.getElementById('hostel-receipt').innerHTML = '';
+				document.getElementById('hostel-receipt-cost').innerHTML = '';
+				document.getElementById('hostel-service').innerHTML = '';
+			}
+
+			if(document.getElementById('mess').checked)
+			{
+				document.getElementById('mess-checkout').innerHTML = 'Mess Charge';
+				document.getElementById('mess-checkout-cost').innerHTML = '₹ 10000';
+				document.getElementById('mess-receipt').innerHTML = 'Mess Charge';
+				document.getElementById('mess-receipt-cost').innerHTML = '₹ 10000';
+				document.getElementById('mess-service').innerHTML = 'Mess';
+				total+= 10000;
+			}
+			else
+			{
+				document.getElementById('mess-checkout').innerHTML = '';
+				document.getElementById('mess-checkout-cost').innerHTML = '';
+				document.getElementById('mess-receipt').innerHTML = '';
+				document.getElementById('mess-receipt-cost').innerHTML = '';
+				document.getElementById('mess-service').innerHTML = '';
+			}
+
+			if(!document.getElementById('mess').checked && !document.getElementById('library').checked && !document.getElementById('hostel').checked)
+			{
+				document.getElementById('extra-service').innerHTML = '';
+			}
+			else
+			{
+				document.getElementById('extra-service').innerHTML = '<br><b>Extra Services taken :</b>';
+			}
+
+			document.getElementById('total-checkout').innerHTML = total;
+			document.getElementById('total-receipt').innerHTML = total;
+
+		}
+
+		function dyheight() {
+			if(window.innerWidth > 991 || window.innerWidth < 575)
+			{
+				document.getElementById('footer-image').style.width = document.getElementById('footer-image-div').offsetWidth+'px';
+			}
+			else
+			{
+				document.getElementById('footer-image').style.width = (window.innerWidth/3)+'px';
+			}
+			document.getElementById('footer-image-div').style.height = document.getElementById('footer-image').clientHeight+'px';
+			document.getElementById('footer-image-div').style.marginTop = ((document.getElementById('footer-3').offsetHeight - document.getElementById('footer-image').clientHeight)/2)+'px';
+			page_height();
+		}
+
+
+		function black(){
+			no_of_click++;
+			if(document.getElementById('check').checked)
+			{
+				document.getElementById('nav').style.background = '#fff';
+				document.getElementById('logo-dark').style.opacity = '1';
+				document.getElementById('logo-light').style.opacity = '0';
+				document.getElementById('bars').style.color = "#000";
+				setTimeout(function() {document.getElementById('notnav').classList.toggle('nodisplay');}, 500);
+				document.getElementById('bars').style.transform = 'rotate(-90deg)';
+				setTimeout(function() {document.getElementById('bars').classList.add('fa-times');}, 300);
+				setTimeout(function() {document.getElementById('bars').style.transform = 'rotate(-270deg)';}, 100);
+			}
+			else
+			{
+				navchange();
+				document.getElementById('notnav').classList.toggle('nodisplay');
+				document.getElementById('bars').style.transform = 'rotate(-180deg)';
+				setTimeout(function() {document.getElementById('bars').classList.add('fa-bars');}, 300);
+				setTimeout(function() {document.getElementById('bars').style.transform = 'rotate(0deg)';}, 100);
+			}
+		}
+
+		function page_height() {
+			setTimeout(function() {
+				document.getElementById('full-footer').style.marginTop = '0';
+				var doc_height = document.getElementsByTagName('body')[0].offsetHeight;
+				var view_height = window.innerHeight;
+				if(doc_height<view_height)
+				{
+					document.getElementById('full-footer').style.marginTop = (view_height - doc_height) + 'px';
+				}
+			}, 30);
+		}
+
+
+
+		function navchange() {
+			if(window.scrollY>2)
+			{
+				document.getElementById('nav').style.background = 'rgba(255,255,255,0.97)';
+				document.getElementById('logo-dark').style.opacity = '1';
+				document.getElementById('logo-light').style.opacity = '0';
+				document.getElementById('nav').style.boxShadow = '0px 4px 4px rgba(0,0,0,0.25)';
+				let items = document.getElementsByClassName('navbar-item');
+				let i=0;
+				for(i=0;i<items.length;i++)
+				{
+					items[i].style.color = '#393185';
+				}
+				document.getElementById('bars').style.color = "#000";
+				document.getElementsByClassName('banner')[0].style.paddingTop = '60px';
+				document.getElementById('nav').style.height = '60px';
+
+				var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+				for(i=0; i<list.length; i++)
+				{
+					list[i].style.lineHeight = '60px';
+				}
+
+				list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+				list.style.height = '50px';
+				list.style.top = '5px';
+
+				list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+				list.style.height = '50px';
+				list.style.top = '5px';
+			}
+			else
+			{
+				document.getElementById('nav').style.background = 'transparent';
+				document.getElementById('logo-light').style.opacity = '1';
+				document.getElementById('logo-dark').style.opacity = '0';
+				document.getElementById('nav').style.boxShadow = '0px 0px 0px rgba(0,0,0,0)';
+				if(window.innerWidth>870)
+				{
+					let items = document.getElementsByClassName('navbar-item');
+					let i=0;
+					for(i=0;i<items.length;i++)
+					{
+						items[i].style.color = 'rgba(255,255,255,1)';
+					}
+					document.getElementsByClassName('banner')[0].style.paddingTop = '70px';
+					document.getElementById('nav').style.height = '70px';
+
+					var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+					for(i=0; i<list.length; i++)
+					{
+						list[i].style.lineHeight = '70px';
+					}
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+					list.style.height = '55px';
+					list.style.top = '10px';
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+					list.style.height = '55px';
+					list.style.top = '10px';
+				}
+				else
+				{
+					let items = document.getElementsByClassName('navbar-item');
+					let i=0;
+					for(i=0;i<items.length;i++)
+					{
+						items[i].style.color = '#393185';
+					}
+					document.getElementsByClassName('banner')[0].style.paddingTop = '60px';
+					document.getElementById('nav').style.height = '60px';
+
+					var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+					for(i=0; i<list.length; i++)
+					{
+						list[i].style.lineHeight = '60px';
+					}
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+					list.style.height = '50px';
+					list.style.top = '5px';
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+					list.style.height = '50px';
+					list.style.top = '5px';
+				}
+				document.getElementById('bars').style.color = "#fff";
+			}
+		}
+
+		function boom()
+		{
+			var opacity = document.getElementsByClassName('boom-opacity');
+			for(var i=0;i<opacity.length;i++)
+			{
+				if(window.innerHeight<900)
+				{
+					if(window.scrollY+((9.5*window.innerHeight)/10)>opacity[i].offsetTop)
+					{
+						opacity[i].style.opacity = '1';
+						opacity[i].style.marginTop = '0';
+					}
+				}
+				else
+				{
+					opacity[i].style.opacity = '1';
+					opacity[i].style.marginTop = '0';
+				}
+			}
+		}
+
+		function receipt() {
+
+			document.getElementById('input-name').innerHTML = document.getElementById('name').value;
+			document.getElementById('input-age').innerHTML = document.getElementById('age').value;
+			document.getElementById('input-galaxy').innerHTML = document.getElementById('galaxy').value;
+			document.getElementById('input-contact').innerHTML = document.getElementById('contact').value;
+			document.getElementById('input-spaceship').innerHTML = document.getElementById('spaceship').value;
+			document.getElementById('input-email').innerHTML = document.getElementById('email').value;
+
+			document.getElementById('checkout-info').style.display = 'none';
+			document.getElementById('receipt-info').style.display = 'block';
+
+			var date = new Date();
+
+			var date_str = date.getDate() + '/' + (parseInt(date.getMonth(), 10)+1) + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ' Androemeda Time';
+
+			document.getElementById('today').innerHTML = date_str;
+
+			document.getElementById('receipt-info').scrollIntoView();
+
+			document.getElementById('ty').innerHTML = 'Thank You';
+
+			page_height();
+
+			return false;
+		}
+	</script>
+
+</head>
+<body>
+
+	<div class="banner padding-b-2">
+
+		<nav id="nav">
+			<input type="checkbox" id="check" onchange="black();">
+			<label for="check">
+				<i class="fas fa-bars" id="bars"></i>
+			</label>
+			<a href="index.html"><img src="images/logo1.png" id="logo-light" alt="Logo"></a>
+			<a href="index.html"><img src="images/logo2.png" id="logo-dark" alt="Logo"></a>
+			<ul>
+				<li><a class="navbar-item" href="index.html"><i class="fas fa-home"></i> Home</a></li>
+				<li><a class="navbar-item" href="about.html"><i class="fas fa-users"></i> About Us</a></li>
+				<li><a class="navbar-item" href="courses.html"><i class="fas fa-book-open"></i> Our Courses</a></li>
+				<li><a class="navbar-item" href="contact.html"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+			</ul>
+		</nav>
+
+		<div class="container">
+			<h1 class="subname padding-t-2 padding-b-2 text-white" id="ty">Enroll Now</h1>
+		</div>
+
+	</div>
+
+
+<div id="notnav" class="nodisplay"></div>
+
+
+
+
+<div class="container padding-y-5" id="checkout-info">
+	<div class="row padding-y-3 course-form-container">
+		<div class="col-12 course-form-main course-details">
+			<b>Course Name : </b> <span id="course-name"></span>
+			<br>
+			<b>Course Fee : </b> ₹ <span id="course-fee"></span>
+			<br>
+			<b>Course Duration : </b> <span id="course-dur"></span> years
+		</div>
+		<div class="col-12 col-md-6">
+			<form action="javascript: void(0)" class="form-group" id="checkout-form" onsubmit="return receipt();" autocomplete="off">
+				<label for="name">Your Full Name</label>
+				<input type="text" name="name" id="name" class="form-control margin-t-1 margin-b-2" required>
+				<div class="row">
+					<div class="col-sm-6 col-12">
+						<label for="age">Age</label>
+						<input type="number" min="18" max="22" name="age" id="age" class="form-control margin-t-1 margin-b-2" required>
+					</div>
+					<div class="col-sm-6 col-12">
+						<label for="contact">Contact Number</label>
+						<input type="text" pattern="[0-9]{8,13}" title="Enter correct contact number" name="contact" id="contact" class="form-control margin-t-1 margin-b-2" required>
+					</div>
+				</div>
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email" class="form-control margin-t-1 margin-b-2" required>
+				<label for="galaxy">Galaxy of residence</label>
+				<input type="text" name="galaxy" id="galaxy" class="form-control margin-t-1 margin-b-2" required>
+				<label for="spaceship">Spaceship ID</label>
+				<input type="text" name="spaceship" id="spaceship" class="form-control margin-t-1 margin-b-2" required>
+				<input type="checkbox" name="library" id="library" onchange="checkout();" checked>
+				<label for="library">Subscribe to college library</label>
+				<br>
+				<input type="checkbox" name="hostel" id="hostel" onchange="checkout();" checked>
+				<label for="hostel">I need hostel accomodation</label>
+				<br>
+				<input type="checkbox" name="mess" id="mess" onchange="checkout();" checked>
+				<label for="mess">I need mess service</label>
+			</form>
+		</div>
+		<div class="col-12 col-md-6 billing-div">
+			<div class="col-12"><b class="course-form-main">Billing Details :</b></div>
+
+			<div class="row">
+				<div class="col-12 billing-header-hr"><hr></div>
+				<div class="col-7 col-lg-7 col-md-6 text-center">
+					<b>Term</b>
+				</div>
+				<div class="col-5 col-lg-5 col-md-6 billing-header">
+					<b>Fee</b>
+				</div>
+				<div class="col-12"><hr></div>
+				<div class="col-7 col-lg-7 col-md-6">
+					Course Fee
+				</div>
+				<div class="col-5 col-lg-5 col-md-6">
+					₹ <span id="course-fee-checkout"></span>
+				</div>
+				<div class="col-7 col-lg-7 col-md-6">
+					Maintenance
+				</div>
+				<div class="col-5 col-lg-5 col-md-6">
+					₹ 2500
+				</div>
+				<div class="col-7 col-lg-7 col-md-6" id="library-checkout">
+					
+				</div>
+				<div class="col-5 col-lg-5 col-md-6" id="library-checkout-cost">
+					
+				</div>
+				<div class="col-7 col-lg-7 col-md-6" id="hostel-checkout">
+					
+				</div>
+				<div class="col-5 col-lg-5 col-md-6" id="hostel-checkout-cost">
+					
+				</div>
+				<div class="col-7 col-lg-7 col-md-6" id="mess-checkout">
+					
+				</div>
+				<div class="col-5 col-lg-5 col-md-6" id="mess-checkout-cost">
+					
+				</div>
+				<div class="col-12"><hr></div>
+				<div class="col-7 col-lg-7 col-md-6">
+					<b>Total</b>
+				</div>
+				<div class="col-5 col-lg-5 col-md-6">
+					<b>₹ <span  id="total-checkout">100000</span></b>
+				</div>
+
+				<div class="col-12">
+					<input class="btn btn-success checkout-btn" type="submit" value="Generate Receipt" form="checkout-form">
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container padding-y-5 d-none" id="receipt-info">
+	<div class="row padding-y-3 course-form-container" style="border-bottom: 0;">
+		<div class="col-12 text-center"><b>Receipt</b></div>
+		<div class="col-12 text-center"><b class="course-form-main">Space Institute of East Androemeda</b></div>
+	</div>
+	<div class="row padding-y-3 course-form-container" style="border-top: 0;">
+		<div class="col-12 text-right"><b>Date : </b><span id="today"></span></div>
+		<div class="col-12 col-md-6">
+			<div class="row">
+				<div class="col-12 col-md-6"><b>Name :</b><span id="input-name"></span><br><b>Email : </b><span id="input-email"></span></div>
+				<div class="col-12 col-md-6"><b>Age : </b><span id="input-age"></span><br><b>Contact : </b><span id="input-contact"></span></div>
+
+				<div class="col-12 col-lg-6">
+					<b>Galaxy of Residence :</b>
+					<br>
+					<span id="input-galaxy">
+						
+					</span>
+				</div>
+
+				<div class="col-12 col-lg-6">
+					<b>Spaceship ID :</b>
+					<br>
+					<span id="input-spaceship">
+						
+					</span>
+				</div>
+				<div class="col-12">
+					<br>
+					<b>Course Name :</b>
+					<span id="input-course-name">
+						
+					</span>
+				</div>
+
+				<div class="col-12">
+					<b>Course Fee :</b> ₹
+					<span id="input-course-fee">
+						
+					</span>
+				</div>
+
+				<div class="col-12">
+					<b>Course Duration :</b>
+					<span id="input-course-dur">
+						
+					</span> years
+				</div>
+
+				<div class="col-12" id="extra-service">
+					<br>
+					<b>Extra Services taken :</b>
+				</div>
+				<div class="col-12" id="library-service">
+					Library
+				</div>
+				<div class="col-12" id="hostel-service">
+					Hostel
+				</div>
+				<div class="col-12" id="mess-service">
+					Mess
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-6 billing-div">
+
+			<div class="row">
+				<div class="col-12 billing-header-hr"><hr></div>
+				<div class="col-7 col-lg-7 col-md-6 text-center">
+					<b>Term</b>
+				</div>
+				<div class="col-5 col-lg-5 col-md-6 billing-header">
+					<b>Fee</b>
+				</div>
+				<div class="col-12"><hr></div>
+				<div class="col-7 col-lg-7 col-md-6">
+					Course Fee
+				</div>
+				<div class="col-5 col-lg-5 col-md-6">
+					₹ <span id="course-fee-receipt"></span>
+				</div>
+				<div class="col-7 col-lg-7 col-md-6">
+					Maintenance
+				</div>
+				<div class="col-5 col-lg-5 col-md-6">
+					₹ 2500
+				</div>
+				<div class="col-7 col-lg-7 col-md-6" id="library-receipt">
+					
+				</div>
+				<div class="col-5 col-lg-5 col-md-6" id="library-receipt-cost">
+					
+				</div>
+				<div class="col-7 col-lg-7 col-md-6" id="hostel-receipt">
+					
+				</div>
+				<div class="col-5 col-lg-5 col-md-6" id="hostel-receipt-cost">
+					
+				</div>
+				<div class="col-7 col-lg-7 col-md-6" id="mess-receipt">
+					
+				</div>
+				<div class="col-5 col-lg-5 col-md-6" id="mess-receipt-cost">
+					
+				</div>
+				<div class="col-12"><hr></div>
+				<div class="col-7 col-lg-7 col-md-6">
+					<b>Total</b>
+				</div>
+				<div class="col-5 col-lg-5 col-md-6">
+					<b>₹ <span  id="total-receipt">100000</span></b>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+	document.getElementById('course-name').innerHTML = course_list[course_id];
+	document.getElementById('course-fee').innerHTML = course_fee[course_id];
+	document.getElementById('input-course-name').innerHTML = course_list[course_id];
+	document.getElementById('input-course-fee').innerHTML = course_fee[course_id];
+	document.getElementById('course-fee-checkout').innerHTML = course_fee[course_id];
+	document.getElementById('course-fee-receipt').innerHTML = course_fee[course_id];
+	document.getElementById('course-dur').innerHTML = course_dur[course_id];
+	document.getElementById('input-course-dur').innerHTML = course_dur[course_id];
+	checkout();
+
+</script>
+
+
+
+
+
+<footer class="footer" id="full-footer">
+	<div class="main-footer padding-t-3">
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-lg-4 col-sm-6 col-12 padding-b-sm-0 padding-b-4 boom-mt boom-opacity">
+					<div class="margin-l-sm-3 margin-l-lg-0 margin-l-0 text-left margin-b-2 margin-b-sm-3 footer-head"><b>Domains</b></div>
+					<div class="row footer-data">
+						<div class="col-12 text-left margin-b-2">We have expertise in providing knowledge to the various sectors of technology:</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Satellites</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Human Interventions</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Galaxies</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Medical Sciences</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Management & Statistics</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Space Softwares</div>
+					</div>
+				</div>
+
+
+
+				<div class="col-lg-4 col-sm-6 col-12 padding-b-sm-0 padding-b-4 boom-mt boom-opacity">
+					<div class="margin-l-sm-3 margin-l-0 margin-b-3 footer-head text-left"><b>Reach Out To Us</b></div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="far fa-id-card"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">Abhishek Joshi<br>Cibin Chandrasekhar</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="fas fa-mobile-alt"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">9757468857<br>8451039939</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="far fa-envelope"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">siea@space.edu.in</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="fas fa-store-alt"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2 footer-address">At Andromeda Galaxy,<wbr> Near Milky Way<br>41° 16′ 9″</div>
+					</div>
+					<div class="text-center text-md-left padding-b-2 padding-l-md-5">
+						<a href="#" title="Instagram" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-insta text-white"><i class="fab fa-instagram"></i></a>
+						<a href="#" title="Location" class="btn btn-light padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social"><i class="fas fa-map-marker-alt"></i></a>
+						<a href="#" title="LinkedIn" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-linkedin text-white"><i class="fab fa-linkedin-in"></i></a>
+						<a href="#" title="Facebook" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-facebook text-white"><i class="fab fa-facebook"></i></a>
+					</div>
+				</div>
+
+
+				<div class="col-lg-4 col-12 padding-t-sm-0 padding-y-2 d-lg-block d-none" id="footer-3">
+					<div class="w-75 mx-auto" id="footer-image-div">
+						<img src="images/logo1.png" class="position-absolute" id="footer-image" alt="SIEA" onload="dyheight();">
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<div class="credit-box padding-y-0 margin-y-0"><div class="text-right credit container padding-y-0 margin-y-0">Website by Abhishek Joshi<br>& Cibin Chandrasekhar</div></div>
+
+	<div class="copyright small text-center padding-y-1"><i class="far fa-copyright"></i> 2020 SIEA. All rights reserved.</div>
+</footer>
+
+
+<script type="text/javascript">
+	
+	if(window.scrollY>2)
+	{
+		document.getElementById('nav').style.background = 'rgba(255,255,255,0.97)';
+		document.getElementById('logo-dark').style.opacity = '1';
+		document.getElementById('logo-light').style.opacity = '0';
+		document.getElementById('nav').style.boxShadow = '0px 4px 4px rgba(0,0,0,0.25)';
+		let items = document.getElementsByClassName('navbar-item');
+		let i=0;
+		for(i=0;i<items.length;i++)
+		{
+			items[i].style.color = '#393185';
+		}
+		document.getElementById('bars').style.color = "#000";
+		document.getElementsByClassName('banner')[0].style.paddingTop = '60px';
+		document.getElementById('nav').style.height = '60px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '60px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+	}
+	else if(window.innerWidth<870)
+	{
+		document.getElementsByClassName('banner')[0].style.paddingTop = '60px';
+		document.getElementById('nav').style.height = '60px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '60px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+	}
+	else
+	{
+		document.getElementsByClassName('banner')[0].style.paddingTop = '70px';
+		document.getElementById('nav').style.height = '70px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '70px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '55px';
+		list.style.top = '10px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '55px';
+		list.style.top = '10px';
+	}
+
+	list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+
+	document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].onmouseover = function() {
+		if(window.innerWidth>870 && window.scrollY<2)
+		{
+			for(i=0; i<list.length; i++)
+			{
+				list[i].getElementsByTagName('a')[0].style.color = '#fff';
+			}
+		}
+	}
+
+
+
+	document.getElementById('notnav').onclick = function() {
+		document.getElementById('check').checked=false;
+		black();
+	}
+
+
+
+
+	window.onscroll = function() {
+
+		navchange();
+
+		boom();
+
+	}
+
+
+
+
+	window.onresize = function() {
+		navchange();
+
+		if(document.getElementById('check').checked)
+		{
+			if(window.innerWidth<=870)
+			{
+				document.getElementById('notnav').classList.remove('nodisplay');
+			}
+			else
+			{
+				document.getElementById('notnav').classList.add('nodisplay');
+			}
+		}
+
+
+		setTimeout(function() {
+			dyheight();
+		}, 350);
+
+		boom();
+
+		page_height();
+	}
+
+	boom();
+
+
+	window.onload = function() {
+		document.getElementById('check').checked=false;
+		page_height();
+		setTimeout(function() {
+			if(document.getElementById('check').checked && no_of_click==0)
+			{
+				document.getElementById('check').checked=false;
+			}
+			boom();
+			page_height();
+			dyheight();
+		}, 2200);
+	};
+
+	document.onload = function() {
+		document.getElementById('check').checked=false;
+		page_height();
+		setTimeout(function() {
+			if(document.getElementById('check').checked && no_of_click==0)
+			{
+				document.getElementById('check').checked=false;
+			}
+			boom();
+			page_height();
+			dyheight();
+		}, 2200);
+	};
+
+		
+	
+</script>
+
+</body>
+</html>

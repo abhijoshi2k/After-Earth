@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Space Institute of East Androemeda</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta http-equiv="content-language" content="en-in"/>
+	<meta name="author" content="Abhishek Joshi & Cibin Chandrasekhar">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#7b2a7b">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#7b2a7b">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#7b2a7b">
+
+	<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-add-css="false"></script>
+	<link href="https://use.fontawesome.com/releases/v5.13.0/css/svg-with-js.css" rel="stylesheet" />
+
+	<link rel="shortcut icon" href="images/logo2.png" type="image/png">
+	<link rel="icon" href="images/logo2.png" type="image/png">
+	<link rel="apple-touch-icon" href="images/logo2.png" type="image/png">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+
+
+	<script type="text/javascript">
+		var no_of_click = 0;
+
+		function navchange() {
+			if(window.scrollY>50)
+			{
+				document.getElementById('nav').style.background = 'rgba(255,255,255,0.97)';
+				document.getElementById('logo-dark').style.opacity = '1';
+				document.getElementById('logo-light').style.opacity = '0';
+				document.getElementById('nav').style.boxShadow = '0px 4px 4px rgba(0,0,0,0.25)';
+				let items = document.getElementsByClassName('navbar-item');
+				let i=0;
+				for(i=0;i<items.length;i++)
+				{
+					items[i].style.color = '#393185';
+				}
+				document.getElementById('bars').style.color = "#000";
+				document.getElementById('nav').style.height = '60px';
+
+				var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+				for(i=0; i<list.length; i++)
+				{
+					list[i].style.lineHeight = '60px';
+				}
+
+				list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+				list.style.height = '50px';
+				list.style.top = '5px';
+
+				list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+				list.style.height = '50px';
+				list.style.top = '5px';
+
+				if(window.innerHeight<830 && window.innerWidth>=900)
+				{
+					//do nothing
+				}
+				else
+				{
+					document.getElementsByClassName('banner')[0].style.transitionTimingFunction = 'linear';
+					document.getElementsByClassName('banner')[0].style.minHeight = '0px';
+				}
+			}
+			else
+			{
+				document.getElementById('nav').style.background = 'transparent';
+				document.getElementById('logo-light').style.opacity = '1';
+				document.getElementById('logo-dark').style.opacity = '0';
+				document.getElementById('nav').style.boxShadow = '0px 0px 0px rgba(0,0,0,0)';
+				if(window.innerHeight<830 && window.innerWidth<900)
+				{
+					document.getElementsByClassName('banner')[0].style.transitionTimingFunction = 'cubic-bezier(0, 1, 0, 1)';
+					document.getElementsByClassName('banner')[0].style.minHeight = (screen.height)+'px';
+				}
+				else if(window.innerHeight<830 && window.innerWidth>=900)
+				{
+					//do nothing
+				}
+				else
+				{
+					document.getElementsByClassName('banner')[0].style.transitionTimingFunction = 'linear';
+					document.getElementsByClassName('banner')[0].style.minHeight = '0px';
+				}
+				if(window.innerWidth>870)
+				{
+					let items = document.getElementsByClassName('navbar-item');
+					let i=0;
+					for(i=0;i<items.length;i++)
+					{
+						items[i].style.color = 'rgba(255,255,255,1)';
+					}
+					document.getElementById('nav').style.height = '70px';
+
+					var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+					for(i=0; i<list.length; i++)
+					{
+						list[i].style.lineHeight = '70px';
+					}
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+					list.style.height = '55px';
+					list.style.top = '10px';
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+					list.style.height = '55px';
+					list.style.top = '10px';
+				}
+				else
+				{
+					let items = document.getElementsByClassName('navbar-item');
+					let i=0;
+					for(i=0;i<items.length;i++)
+					{
+						items[i].style.color = '#393185';
+					}
+					document.getElementById('nav').style.height = '60px';
+
+					var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+					for(i=0; i<list.length; i++)
+					{
+						list[i].style.lineHeight = '60px';
+					}
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+					list.style.height = '50px';
+					list.style.top = '5px';
+
+					list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+					list.style.height = '50px';
+					list.style.top = '5px';
+				}
+				document.getElementById('bars').style.color = "#fff";
+			}
+		}
+
+		function dyheight() {
+
+
+			let plist = document.getElementsByClassName('img-client-home');
+			let hlist = document.getElementsByClassName('image-move');
+			
+			harray = [];
+			if(hlist[0].style.display != 'none')
+			{
+				harray.push(plist[0].clientHeight);
+				max = plist[0].clientHeight;
+			}
+			else
+			{
+				hlist[0].style.opacity = '0';
+				hlist[0].style.transition = '0s';
+				hlist[0].style.left = ((plist.length-1)*25)+'%';
+				hlist[0].style.display = 'initial';
+				harray.push(plist[0].clientHeight);
+				max = plist[0].clientHeight;
+				hlist[0].style.opacity = '1';
+				hlist[0].style.transition = '1s';
+			}
+			for(var i=1; i<plist.length; i++)
+			{
+				if(hlist[i].style.display != 'none')
+				{
+					if(plist[i].clientHeight>max)
+					{
+						max=plist[i].clientHeight;
+					}
+					harray.push(plist[i].clientHeight);
+				}
+				else
+				{
+					hlist[i].style.opacity = '0';
+					hlist[i].style.transition = '0s';
+					hlist[i].style.left = ((plist.length-1)*25)+'%';
+					hlist[i].style.display = 'initial';
+					if(plist[i].clientHeight>max)
+					{
+						max=plist[i].clientHeight;
+					}
+					harray.push(plist[i].clientHeight);
+					hlist[i].style.opacity = '1';
+					hlist[i].style.transition = '1s';
+				}
+			}
+			for(var i=0; i<plist.length; i++)
+			{
+				plist[i].style.top = ((max/2)-(harray[i]/2))+'px';
+			}
+			document.getElementById('img-strip').style.height = (max+1)+'px';
+
+			
+			document.getElementById('photo-stack').style.height = (document.getElementById('stack-pics').clientHeight + 10)+'px';
+			
+			if(window.innerWidth > 991 || window.innerWidth < 575)
+			{
+				document.getElementById('footer-image').style.width = document.getElementById('footer-image-div').offsetWidth+'px';
+			}
+			else
+			{
+				document.getElementById('footer-image').style.width = (window.innerWidth/3)+'px';
+			}
+			document.getElementById('footer-image-div').style.height = document.getElementById('footer-image').clientHeight+'px';
+			document.getElementById('footer-image-div').style.marginTop = ((document.getElementById('footer-3').offsetHeight - document.getElementById('footer-image').clientHeight)/2)+'px';
+
+
+			if(window.innerHeight<830 && window.innerWidth>=900)
+			{
+				document.getElementById('banner').style.minHeight = window.innerHeight+'px';
+			}
+
+			
+
+			var service_data = document.getElementsByClassName('service-data');
+			for(var i=0;i<service_data.length;i++)
+			{
+				service_data[i].style.height = 'auto';
+			}
+
+			
+
+			if(window.innerWidth>767)
+			{
+				var max = service_data[0].clientHeight;
+				for(var i=1;i<service_data.length;i++)
+				{
+					if(service_data[i].clientHeight>max)
+					{
+						max = service_data[i].clientHeight;
+					}
+				}
+				for(var i=0;i<service_data.length;i++)
+				{
+					service_data[i].style.height = max+'px';
+				}
+			}
+
+			console.log('The errors are intentional. They will stop once page is fully loaded :)');
+
+			page_height();
+
+		}
+
+
+		function black(){
+			no_of_click++;
+			if(document.getElementById('check').checked)
+			{
+				document.getElementById('nav').style.background = '#fff';
+				document.getElementById('logo-dark').style.opacity = '1';
+				document.getElementById('logo-light').style.opacity = '0';
+				document.getElementById('bars').style.color = "#000";
+				setTimeout(function() {document.getElementById('notnav').classList.toggle('nodisplay');}, 500);
+				document.getElementById('bars').style.transform = 'rotate(-90deg)';
+				setTimeout(function() {document.getElementById('bars').classList.add('fa-times');}, 300);
+				setTimeout(function() {document.getElementById('bars').style.transform = 'rotate(-270deg)';}, 100);
+			}
+			else
+			{
+				navchange();
+				document.getElementById('notnav').classList.toggle('nodisplay');
+				document.getElementById('bars').style.transform = 'rotate(-180deg)';
+				setTimeout(function() {document.getElementById('bars').classList.add('fa-bars');}, 300);
+				setTimeout(function() {document.getElementById('bars').style.transform = 'rotate(0deg)';}, 100);
+			}
+		}
+
+		function page_height() {
+			setTimeout(function() {
+				document.getElementById('full-footer').style.marginTop = '0';
+				var doc_height = document.getElementsByTagName('body')[0].offsetHeight;
+				var view_height = window.innerHeight;
+				if(doc_height<view_height)
+				{
+					document.getElementById('full-footer').style.marginTop = (view_height - doc_height) + 'px';
+				}
+			}, 30);
+		}
+
+
+
+		function boom()
+		{
+			var opacity = document.getElementsByClassName('boom-opacity');
+			for(var i=0;i<opacity.length;i++)
+			{
+				if(window.innerHeight<900)
+				{
+					if(window.scrollY+((9.5*window.innerHeight)/10)>opacity[i].offsetTop)
+					{
+						opacity[i].style.opacity = '1';
+						opacity[i].style.marginTop = '0';
+					}
+				}
+				else
+				{
+					opacity[i].style.opacity = '1';
+				}
+			}
+			var mt = document.getElementsByClassName('boom-mt');
+			for(var i=0;i<mt.length;i++)
+			{
+				if(window.innerWidth>600 && window.innerHeight<900)
+				{
+					if(window.innerHeight>(mt[i].getBoundingClientRect().top)+window.innerHeight-600)
+					{
+						mt[i].style.marginTop = '0';
+					}
+				}
+				else if(window.innerHeight<900)
+				{
+					if(window.innerHeight>(mt[i].getBoundingClientRect().top)+window.innerHeight-750)
+					{
+						mt[i].style.marginTop = '0';
+					}
+				}
+				else
+				{
+					mt[i].style.marginTop = '0';
+				}
+			}
+		}
+
+		
+	</script>
+
+</head>
+<body>
+
+	<div class="banner" id="banner">
+
+		<nav id="nav">
+			<input type="checkbox" id="check" onchange="black();">
+			<label for="check">
+				<i class="fas fa-bars" id="bars"></i>
+			</label>
+			<a href="javascript: void(0)"><img src="images/logo1.png" id="logo-light" alt="Logo"></a>
+			<a href="javascript: void(0)"><img src="images/logo2.png" id="logo-dark" alt="Logo"></a>
+			<ul>
+				<li class="active" id="active"><a class="navbar-item" href="javascript: void(0)"><i class="fas fa-home"></i> Home</a></li>
+				<li><a class="navbar-item" href="about.html"><i class="fas fa-users"></i> About Us</a></li>
+				<li><a class="navbar-item" href="courses.html"><i class="fas fa-book-open"></i> Our Courses</a></li>
+				<li><a class="navbar-item" href="contact.html"><i class="fas fa-phone-alt"></i> Contact Us</a></li>
+			</ul>
+		</nav>
+		<div class="banner-content boom-mt boom-opacity" onload="boom();">
+			<h1 class="banner-title padding-t-5 text-white">
+				Space Institute of East Andromeda
+			</h1>
+			<div class="width-changer banner-caption padding-b-0">
+				<p class="margin-b-0"> Get Best in Class Education in Eastern Androemeda!</p><p class="margin-b-lg-0"> <i>We transform students into responsible citizens of galaxy.</i><ul class="banner-caption list-unstyled"><li><i class="fas fa-spa"></i> Cultivation</li><li><i class="fab fa-wpexplorer"></i> Exploration</li><li><i class="fas fa-grin-alt"></i> Enlightenment</li></ul></p>
+			</div>
+			
+
+			<div class="padding-t-2 padding-b-sm-4 padding-b-3"><div class="margin-r-lg-5 padding-r-lg-5"><a href="courses.html" class="margin-r-lg-5 btn banner-btn">View Courses</a></div></div>
+
+		</div>
+
+	</div>
+
+
+<div id="notnav" class="nodisplay"></div>
+
+
+
+
+
+
+
+
+
+<div class="container padding-y-4">
+	<h2 class="text-center padding-b-4 padding-b-md-3 home-about-title boom-opacity font-weight-bold">Our Motto</h2>
+	<div class="row">
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service1">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-globe"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">Cultivation</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-5">We cultivate better thinking and problem-solving abilities among the students. It helps them to approach challenges dynamically and efficiently.</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service2">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-user-cog"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">Expansion</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-5">We understand the requirements of the upcoming future and hence, help the students think beyond their imagination and come up with new ideas.</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-4 col-md-6 col-12 boom-mt boom-opacity d-block d-md-none d-lg-block">
+			
+			<div class="mx-auto services-cards margin-b-4 margin-b-sm-5">
+				
+				<div class="px-auto overflow-hidden service-data" id="service3">
+					<div class="row padding-t-5">
+						<div class="services-circle text-center mx-auto d-block"><div class="col-12 text-center services-icon my-auto"><i class="fas fa-scroll"></i></div></div>
+						<div class="col-12 padding-x-3 text-center services-title margin-y-0"><label for="expand1">Enlightenment</label></div>
+					</div>
+
+					<div class="container text-center services-para padding-t-lg-4 padding-y-2 service-no padding-b-sm-5">We help our students visualise the intensity of competition that he/she would be facing in real world and prepare them for the same.</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	<div class="padding-b-sm-4"><div class="text-right"><a href="courses.html" class="margin-r-lg-5 btn ser-btn banner-btn">View Courses</a></div></div>
+</div>
+
+
+
+
+
+
+<div class="container padding-y-4">
+	
+	<div class="row align-items-center justify-content-between boom-opacity boom-mt">
+		<div class="col-12 col-md-6 padding-b-4 padding-b-md-0">
+			<h2 class="text-center padding-b-4 padding-b-md-3 home-about-title boom-opacity font-weight-bold">Who We Are</h2>
+			<div class="home-profile-info text-center text-md-left boom-mt boom-opacity">
+				<p class="boom-opacity home-about-para">We are an organization found by the Androemeda Educational Society, whose primary aim is to produce the most developed citizens who will benefit the galaxies.</p>
+				<p class="home-about-para d-block d-lg-block d-md-none">Our target is to create curiosity in the minds of students who therefore will help in creation and development of an ideal space society. We also aim to inculcate humane, compassionate and considerate values among our students.</p>
+			</div>
+			<div class="justify-content-center boom-opacity">
+				<div class="exp-show">
+					<div class="exp-number-area">
+						<div class="exp-number"><h2>25</h2></div>
+						
+					</div>
+					<div class="exp-unit-area">
+						<h4 class="margin-b-0">Years<span class="exp-unit-2 padding-t-1">Of Experience</span></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-12 col-md-6 boom-opacity text-center d-md-block d-none">
+			<div><img src="images/147.jpg" alt="About SIEA" class="home-about-img"></div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="aboutus-bg">
+	<h2 class="text-center subname padding-t-3 padding-b-md-5 padding-b-4 proud-client boom-opacity">More About Us</h2>
+
+	<div class="row home-product text-center padding-b-5 margin-l-0 padding-r-md-4">
+		<div class="col-md-5 col-12 boom-opacity">
+			<div class='photo-stack' id="photo-stack">
+			  <img src='images/145.jpg' class="stack-pics" id="stack-pics" onload="dyheight();">
+			  <img src='images/150.jpg' class="stack-pics" id="stack-pics">
+			  <img src='images/141.jpg' class="stack-pics">
+			  <img src='images/151.jpg' class="stack-pics">
+			  
+			</div>
+		</div>
+		<div class="col-md-7 col-12">
+			<div class="home-profile-info text-justify margin-r-md-4 margin-l-md-0 margin-x-3 padding-t-md-0 padding-t-2 boom-mt">
+				<p class="boom-opacity">Our college was founded in the year 1995 on Earth, in Mumbai, India. After the unfortunate apocalypse which made Earth inhabitable, we shifted to the <i>Androemeda Galaxy</i>. </p><p class="margin-b-2 boom-opacity">Space Institute of East Androemeda, previously known as South Indian Education Society's Graduate School of Technology, is one of the best institute all over Androemeda galaxy. Keeping in mind that education is the primary need for a good society and human development, we took effort to regroup and continue providing education.</p>
+				<div class="margin-r-sm-5 text-right margin-t-0"><a href="about.html" class="padding-y-1 btn btn-primary home-profile-info">More About Us!</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="proudy">
+	<div class="proudy">
+		<h2 class="text-center padding-b-4 padding-t-4 padding-b-md-3 home-about-title boom-opacity font-weight-bold">Our Placement Partners</h2>
+
+		<div class="padding-b-4 padding-t-2">
+
+			<div class="client-strip padding-y-4">
+			
+				<div class="img-strip" id="img-strip">
+					<div class="image-move"><img src="images/11.jpg" class="img-client-home" alt="Placement" onload="dyheight();"></div>
+					<div class="image-move"><img src="images/12.jpg" class="img-client-home" alt="Placement" onload="dyheight();"></div>
+					<div class="image-move"><img src="images/13.png" class="img-client-home" alt="Placement" onload="dyheight();"></div>
+					<div class="image-move"><img src="images/14.jpg" class="img-client-home" alt="Placement" onload="dyheight();"></div>
+					<div class="image-move"><img src="images/15.png" class="img-client-home" alt="Placement" onload="dyheight();"></div>
+					<div class="image-move"><img src="images/16.jpg" class="img-client-home" alt="Placement" onload="dyheight();"></div>
+				</div>
+			</div>
+
+
+
+			
+
+
+
+
+
+
+			
+
+		</div>
+	</div>
+
+
+	
+
+
+	<div class="container text-right"><p class="text-center home-happy boom-opacity padding-b-4 margin-b-0"><i>We are always improving our college by periodically taking student/parent surveys and acting promptly upon the complaints and suggestions.</i></p></div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+	var iter_no = 0;
+	var left = 0;
+	var image_div = document.getElementsByClassName('image-move');
+	var n = image_div.length;
+	for(var i=0;i<n;i++)
+	{
+		image_div[i].style.left = left + '%';
+		left = left + 25;
+	}
+
+	setInterval(function() {
+		var order = [];
+		for(var i=0; i<n; i++)
+		{
+			order.push((i+iter_no)%n);
+		}
+
+		for(var i=0;i<n;i++)
+		{
+			let left_value = image_div[i].style.left;
+			left_value = parseInt(left_value, 10);
+			left_value = left_value - 25;
+			image_div[i].style.left = left_value + '%';
+		}
+
+		setTimeout(function() {
+			image_div[order[0]].style.display = 'none';
+			image_div[order[0]].style.left = (25*(n-1))+'%';
+			setTimeout(function() {image_div[order[0]].style.display = 'initial';}, 1200);
+		}, 1200);
+
+		iter_no++;
+	}, 3000);
+
+
+
+</script>
+
+
+
+
+
+<footer class="footer" id="full-footer">
+	<div class="main-footer padding-t-3">
+		<div class="container">
+			<div class="row">
+
+
+				<div class="col-lg-4 col-sm-6 col-12 padding-b-sm-0 padding-b-4 boom-mt boom-opacity">
+					<div class="margin-l-sm-3 margin-l-lg-0 margin-l-0 text-left margin-b-2 margin-b-sm-3 footer-head"><b>Domains</b></div>
+					<div class="row footer-data">
+						<div class="col-12 text-left margin-b-2">We have expertise in providing knowledge to the various sectors of technology:</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Satellites</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Human Interventions</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Galaxies</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Medical Sciences</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Management & Statistics</div>
+					</div>
+					<div class="row footer-data padding-x-3">
+						<div class="col-12 margin-b-2 margin-b-md-0 padding-l-0 text-left">Space Softwares</div>
+					</div>
+				</div>
+
+
+
+				<div class="col-lg-4 col-sm-6 col-12 padding-b-sm-0 padding-b-4 boom-mt boom-opacity">
+					<div class="margin-l-sm-3 margin-l-0 margin-b-3 footer-head text-left"><b>Reach Out To Us</b></div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="far fa-id-card"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">Abhishek Joshi<br>Cibin Chandrasekhar</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="fas fa-mobile-alt"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">9757468857<br>8451039939</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="far fa-envelope"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2">siea@space.edu.in</div>
+					</div>
+					<div class="row footer-data">
+						<div class="col-sm-2 col-1 text-sm-right text-left"><i class="fas fa-store-alt"></i></div>
+						<div class="col-sm-10 col-9 margin-b-2 footer-address">At Andromeda Galaxy,<wbr> Near Milky Way<br>41° 16′ 9″</div>
+					</div>
+					<div class="text-center text-md-left padding-b-2 padding-l-md-5">
+						<a href="#" title="Instagram" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-insta text-white"><i class="fab fa-instagram"></i></a>
+						<a href="#" title="Location" class="btn btn-light padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social"><i class="fas fa-map-marker-alt"></i></a>
+						<a href="#" title="LinkedIn" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-linkedin text-white"><i class="fab fa-linkedin-in"></i></a>
+						<a href="#" title="Facebook" class="btn padding-y-0 padding-x-1 margin-l-sm-2 margin-x-2 margin-t-1 footer-social footer-social-facebook text-white"><i class="fab fa-facebook"></i></a>
+					</div>
+				</div>
+
+
+				<div class="col-lg-4 col-12 padding-t-sm-0 padding-y-2 d-lg-block d-none" id="footer-3">
+					<div class="w-75 mx-auto" id="footer-image-div">
+						<img src="images/logo1.png" class="position-absolute" id="footer-image" alt="SIEA" onload="dyheight();">
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<div class="credit-box padding-y-0 margin-y-0"><div class="text-right credit container padding-y-0 margin-y-0">Website by Abhishek Joshi<br>& Cibin Chandrasekhar</div></div>
+
+	<div class="copyright small text-center padding-y-1"><i class="far fa-copyright"></i> 2020 SIEA. All rights reserved.</div>
+</footer>
+
+
+<script type="text/javascript">
+
+
+
+
+	if(window.scrollY>50)
+	{
+		document.getElementById('nav').style.background = 'rgba(255,255,255,0.97)';
+		document.getElementById('logo-dark').style.opacity = '1';
+		document.getElementById('logo-light').style.opacity = '0';
+		document.getElementById('nav').style.boxShadow = '0px 4px 4px rgba(0,0,0,0.25)';
+		let items = document.getElementsByClassName('navbar-item');
+		let i=0;
+		for(i=0;i<items.length;i++)
+		{
+			items[i].style.color = '#393185';
+		}
+		document.getElementById('bars').style.color = "#000";
+		document.getElementById('nav').style.height = '60px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '60px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+	}
+	else if(window.innerWidth<870)
+	{
+		if(window.innerHeight<830 && window.innerWidth<900)
+		{
+			document.getElementsByClassName('banner')[0].style.transitionTimingFunction = 'cubic-bezier(0, 1, 0, 1)';
+			document.getElementsByClassName('banner')[0].style.minHeight = (screen.height)+'px';
+		}
+		else
+		{
+			document.getElementsByClassName('banner')[0].style.transitionTimingFunction = 'linear';
+			document.getElementsByClassName('banner')[0].style.minHeight = '0px';
+		}
+		document.getElementById('nav').style.height = '60px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '60px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '50px';
+		list.style.top = '5px';
+	}
+	else
+	{
+		if(window.innerHeight<830 && window.innerWidth<900)
+		{
+			document.getElementsByClassName('banner')[0].style.transitionTimingFunction = 'cubic-bezier(0, 1, 0, 1)';
+			document.getElementsByClassName('banner')[0].style.minHeight = (screen.height)+'px';
+		}
+		else
+		{
+			// document.getElementsByClassName('banner')[0].style.transitionTimingFunction = 'linear';
+			// document.getElementsByClassName('banner')[0].style.minHeight = '0px';
+		}
+		document.getElementById('nav').style.height = '70px';
+
+		var list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+		for(i=0; i<list.length; i++)
+		{
+			list[i].style.lineHeight = '70px';
+		}
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[0].getElementsByTagName('img')[0];
+		list.style.height = '55px';
+		list.style.top = '10px';
+
+		list = document.getElementsByTagName('nav')[0].getElementsByTagName('a')[1].getElementsByTagName('img')[0];
+		list.style.height = '55px';
+		list.style.top = '10px';
+	}
+	
+	list = document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li');
+
+	document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].onmouseover = function() {
+		if(window.innerWidth>870 && window.scrollY<2)
+		{
+			for(i=0; i<list.length; i++)
+			{
+				list[i].getElementsByTagName('a')[0].style.color = '#fff';
+			}
+		}
+	}
+
+
+
+	document.getElementById('notnav').onclick = function() {
+		document.getElementById('check').checked=false;
+		black();
+	}
+
+	document.getElementById('active').onclick = function() {
+		if(window.innerWidth<=870)
+		{
+			document.getElementById('check').checked=false;
+			black();
+		}
+	}
+
+	
+
+
+	window.onscroll = function() {
+
+
+		navchange();
+
+		boom();
+
+
+	}
+
+	
+
+
+
+
+	window.onresize = function() {
+
+		navchange();
+
+		if(document.getElementById('check').checked)
+		{
+			if(window.innerWidth<=870)
+			{
+				document.getElementById('notnav').classList.remove('nodisplay');
+			}
+			else
+			{
+				document.getElementById('notnav').classList.add('nodisplay');
+			}
+		}
+
+
+		setTimeout(function() {
+			dyheight();
+		}, 1100);
+
+		boom();
+
+		page_height();
+	}
+
+	
+
+	setInterval(function() {
+		sp = document.getElementsByClassName('stack-pics');
+		ele = sp[0];
+		sp[0].remove();
+		document.getElementById('photo-stack').appendChild(ele);
+	}, 3000);
+
+	
+
+	boom();
+
+	window.onload = function() {
+		
+		page_height();
+
+
+
+		setTimeout(function() {
+			if(document.getElementById('check').checked && no_of_click==0)
+			{
+				document.getElementById('check').checked=false;
+			}
+			boom();
+			page_height();
+			dyheight();
+		}, 2200);
+	};
+
+	document.onload = function() {
+		
+		page_height();
+
+
+
+		setTimeout(function() {
+			if(document.getElementById('check').checked && no_of_click==0)
+			{
+				document.getElementById('check').checked=false;
+			}
+			boom();
+			page_height();
+			dyheight();
+		}, 2200);
+	};
+
+		
+	
+</script>
+
+</body>
+</html>
